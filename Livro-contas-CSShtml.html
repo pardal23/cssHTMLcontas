@@ -1,0 +1,199 @@
+<h1 style="color:green; text-align:center;">Engine Maria cegonha 23</h1>
+<body style="background:#000; color:#00ff41; font-family:monospace; padding:20px; --v:23; --op:23;">
+
+    <!-- O FORMULÁRIO É O MOTOR DE RESET NATIVO -->
+    <form>
+        <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px;">
+            
+            <!-- INPUTS QUE ALIMENTAM O CSS (Via Style inline para manter o vínculo) -->
+            <input type="number" name="v" value="23" 
+                   oninput="this.parentElement.parentElement.parentElement.style.setProperty('--v', this.value)" 
+                   style="background:#000; color:#ff00ff; border:1px solid #ff00ff; padding:10px; width:70px; outline:none;">
+            
+            <input type="number" name="op" value="23" 
+                   oninput="this.parentElement.parentElement.parentElement.style.setProperty('--op', this.value)" 
+                   style="background:#000; color:#0cf; border:1px solid #0cf; padding:10px; width:70px; outline:none;">
+
+            <!-- BOTÃO RESET NATIVO (Zero JS) -->
+            <button type="reset" style="background:#222; color:#fff; border:1px solid #444; padding:10px; cursor:pointer;">🔄 RESET</button>
+            
+            <!-- TRAVA VIA CSS CHECKBOX (Zero JS) -->
+            <input type="checkbox" id="lock"> <label for="lock" style="cursor:pointer; color:#888; font-size:12px;">🔒 LOCK</label>
+        </div>
+
+        <!-- PAINEL DE RESULTADOS -->
+        <div id="painel" style="margin-top:20px; display:grid; gap:12px;">
+            <span class="calc" id="soma">"seja feliz" + </span>
+            <span class="calc" id="sub">"seja feliz" - </span>
+            <span class="calc" id="mult">"seja feliz" * </span>
+            <span class="calc" id="div">"seja feliz" / </span>
+        </div>
+    </form>
+
+    <style>
+        .calc::after { color: #ff00ff; font-weight: bold; }
+        
+        /* LÓGICA DE BLOQUEIO PURA (CSS ONLY) */
+        #lock:checked ~ div { pointer-events: none; opacity: 0.4; filter: grayscale(1); }
+
+        /* MOTOR DE CÁLCULO CSS */
+        #soma::after { counter-reset: r calc(var(--v) + var(--op)); content: " " counter(r); }
+        #sub::after  { counter-reset: r calc(var(--v) - var(--op)); content: " " counter(r); }
+        #mult::after { counter-reset: r calc(var(--v) * var(--op)); content: " " counter(r); }
+        #div::after  { counter-reset: r calc(var(--v) / var(--op)); content: " " counter(r); }
+    </style>
+<h1 style="color:green; text-align:center;">Códigos novos css contas </h1>
+<div style="display: flex; flex-direction: column; width: 400px; border: 10px solid #4e342e; border-radius: 4px 15px 15px 4px; box-shadow: 12px 12px 25px rgba(0,0,0,0.3); font-family: 'Georgia', serif;">
+    
+    <!-- 1. DIV CAPA -->
+    <div style="background-color: #5d4037; color: #d4af37; padding: 25px; text-align: center; font-size: 22px; font-weight: bold; border-bottom: 5px double #d4af37;">
+        CAPA ESPIRITUAL
+    </div>
+
+    <!-- 2. DIV ESPIRITUAL CEGONHA -->
+    <div style="background-color: #f3e5f5; color: #6a1b9a; padding: 15px; text-align: center; font-style: italic; border-bottom: 1px solid #ce93d8; font-size: 14px; letter-spacing: 1px;">
+        ✨ Portal da Cegonha ✨
+    </div>
+
+    <!-- 3. DIV PÁGINAS MIOLO -->
+    <!-- O atributo contenteditable permite escrever direto nela como um papel -->
+    <div contenteditable="true" style="background-color: #fffde7; padding: 30px; min-height: 350px; color: #2c3e50; line-height: 1.8; font-size: 16px; outline: none; background-image: linear-gradient(#f0f0f0 1px, transparent 1px); background-size: 100% 28px; cursor: text;">
+        Clique aqui e escreva diretamente nas páginas do miolo...
+    </div>
+
+</div>
+<style>
+h1{text-align:center; color:blue;}
+.container-livro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+input { display: none; }
+
+.livro {
+    width: 250px;
+    height: 350px;
+    position: relative;
+    perspective: 1500px;
+}
+
+.folha {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 5;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 25px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: inset 3px 0 10px rgba(0,0,0,0.1);
+}
+
+.capa {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.back { transform: rotateY(180deg); background: #fafafa; }
+
+/* Lógica de Virar com Z-Index para não sobrepor */
+#vire-1:checked ~ .livro .f1 { transform: rotateY(-160deg); z-index: 1; }
+#vire-2:checked ~ .livro .f2 { transform: rotateY(-155deg); z-index: 2; }
+#vire-3:checked ~ .livro .f3 { transform: rotateY(-150deg); z-index: 3; }
+
+/* Empilhamento inicial */
+.f1 { z-index: 10; }
+.f2 { z-index: 9; }
+.f3 { z-index: 8; }
+
+.miolo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 25px;
+    box-sizing: border-box;
+    z-index: 1;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+}
+
+.instrucao { font-family: sans-serif; color: #666; font-style: italic; }
+</style>
+
+<h1>Arte em espiritualidade.</h1>
+
+<div class="container-livro">
+    <!-- Controles (Checkboxes) -->
+    <input type="checkbox" id="vire-1">
+    <input type="checkbox" id="vire-2">
+    <input type="checkbox" id="vire-3">
+
+    <div class="livro">
+        <!-- Folha 1 (Capa e Verso) -->
+        <label class="folha f1" for="vire-1">
+            <div class="face front capa">
+                <h2>Arte & Espiritualidade</h2>
+                <p>Toque para abrir</p>
+            </div>
+            <div class="face back">
+                <h3>Vamos acreditar em fé espiritual!</h3>
+                <p>A verdade interior manda luz,<br>na forma de amor.</p><br>
+                <img src="https://images.unsplash.com/photo-1674927116534-721cebe1c20c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+            </div>
+        </label>
+
+        <!-- Folha 2 (Páginas 2 e 3) -->
+        <label class="folha f2" for="vire-2">
+            <div class="face front">
+                <h3>O Despertar</h3>
+                <p>A verdade do ser. é jesus no pertencer,<br>em alma sem medo de viver.</p><br>
+                <img src="https://images.unsplash.com/photo-1768483646559-b06a059d83d8?q=80&w=681&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+            </div>
+            <div class="face back">
+                <h3>A Meditação</h3>
+                <p>O meditar ensina a respirar.<br>Ser espírito em humanidade.<br>Paciência. Amor em totalidade.</p><br>           <img src="https://plus.unsplash.com/premium_vector-1751126789853-de8d9c7c0f80?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+            </div>
+        </label>
+
+        <!-- Folha 3 (Páginas 4 e 5) -->
+        <label class="folha f3" for="vire-3">
+            <div class="face front">
+                <h3>A Conexão</h3>
+                <p>Todo o espírito é evolução!<br>Quando há Deus Jesus Maria no coração.</p><br>
+                <img src="https://plus.unsplash.com/premium_vector-1768817351118-db4685f46cfe?q=80&w=1048&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+            </div>
+            <div class="face back">
+                <h3>O Infinito</h3>
+                <p>Fé! O infinito de Deus.<br>Aprender a ser silêncio,<br>no divino escutar!<br>Deus o infinito</p><br>           <img src="https://plus.unsplash.com/premium_vector-1739526041455-0d459ba5320d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+            </div>
+        </label>
+
+        <!-- Miolo (Última Página Fixa) -->
+        <div class="miolo">
+            <h3>Gratidão</h3>
+            <p>Gratidão ao amor, de no ser<br>esta obra completar.<br>Ser paz! Apenas amar amar.</p><br>
+            <img src="https://images.unsplash.com/vector-1751292759527-d3405f87a55b?q=80&w=996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="150px" height="100px">
+        </div>
+    </div>
+    
+    <div class="instrucao">Clique na página para virar</div>
+</div>
