@@ -1,0 +1,164 @@
+
+<span><body style="background:#000; color:#00ff41; font-family:monospace; padding:20px; --v:23; --op:23;"></span>
+
+    <!-- O FORMULÁRIO É O MOTOR DE RESET NATIVO -->
+    <form>
+        <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px;">
+            
+            <!-- INPUTS QUE ALIMENTAM O CSS (Via Style inline para manter o vínculo) -->
+            <input type="number" name="v" value="23" 
+                   oninput="this.parentElement.parentElement.parentElement.style.setProperty('--v', this.value)" 
+                   style="background:#000; color:#ff00ff; border:1px solid #ff00ff; padding:10px; width:70px; outline:none;">
+            
+            <input type="number" name="op" value="23" 
+                   oninput="this.parentElement.parentElement.parentElement.style.setProperty('--op', this.value)" 
+                   style="background:#000; color:#0cf; border:1px solid #0cf; padding:10px; width:70px; outline:none;">
+
+            <!-- BOTÃO RESET NATIVO (Zero JS) -->
+            <button type="reset" style="background:#222; color:#fff; border:1px solid #444; padding:10px; cursor:pointer;">🔄 RESET</button>
+            
+            <!-- TRAVA VIA CSS CHECKBOX (Zero JS) -->
+            <input type="checkbox" id="lock"> <label for="lock" style="cursor:pointer; color:#888; font-size:12px;">🔒 LOCK</label>
+        </div>
+
+        <!-- PAINEL DE RESULTADOS -->
+        <div id="painel" style="margin-top:20px; display:grid; gap:12px;">
+            <span class="calc" id="soma">"seja feliz" + </span>
+            <span class="calc" id="sub">"seja feliz" - </span>
+            <span class="calc" id="mult">"seja feliz" * </span>
+            <span class="calc" id="div">"seja feliz" / </span>
+        </div>
+    </form>
+<span>
+    <style>
+        .calc::after { color: #ff00ff; font-weight: bold; }
+        
+        /* LÓGICA DE BLOQUEIO PURA (CSS ONLY) */
+        #lock:checked ~ div { pointer-events: none; opacity: 0.4; filter: grayscale(1); }
+
+        /* MOTOR DE CÁLCULO CSS */
+        #soma::after { counter-reset: r calc(var(--v) + var(--op)); content: " " counter(r); }
+        #sub::after  { counter-reset: r calc(var(--v) - var(--op)); content: " " counter(r); }
+        #mult::after { counter-reset: r calc(var(--v) * var(--op)); content: " " counter(r); }
+        #div::after  { counter-reset: r calc(var(--v) / var(--op)); content: " " counter(r); }
+      /* ===== GRÁFICO ===== */
+.grafico {
+  display: inline-block;
+  width: 220px;
+  height: 160px;
+  border-left: 2px solid #333;
+  border-bottom: 2px solid #333;
+  position: relative;
+  margin-right: 40px;
+}
+
+.barra {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  border-radius: 4px 4px 0 0;
+}
+
+.b1 { left: 20px; height: 80px; background: #ff595e; }
+.b2 { left: 60px; height: 120px; background: #1982c4; }
+.b3 { left: 100px; height: 60px; background: #8ac926; }
+.b4 { left: 140px; height: 100px; background: #ffca3a; }
+
+.linha {
+  position: absolute;
+  width: 170px;
+  height: 2px;
+  background: #6a4c93;
+  top: 60px;
+  left: 20px;
+  transform: rotate(-15deg);
+}
+
+/* ===== BONECO ===== */
+.boneco {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 160px;
+}
+
+.cabeca {
+  width: 40px;
+  height: 40px;
+  border: 3px solid red;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.corpo {
+  width: 3px;
+  height: 50px;
+  background: red;
+  margin: 0 auto;
+}
+
+.bracos {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  background: green;
+  transform: translateX(-50%);
+}
+
+.pernas {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50px;
+  height: 3px;
+  background: blue;
+  transform: translateX(-50%) rotate(25deg);
+}
+
+.pernas::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: orange;
+  transform: rotate(-50deg);
+  left: -50px;
+}
+    </style>
+</span>
+<h1 style="color:green; text-align:center;">Códigos novos css contas </h1>
+<span class="grafico">
+  <span class="barra b1"></span>
+  <span class="barra b2"></span>
+  <span class="barra b3"></span>
+  <span class="barra b4"></span>
+  <span class="linha"></span>
+</span>
+
+<span class="boneco">
+  <span class="cabeca"></span>
+  <span class="corpo"></span>
+  <span class="bracos"></span>
+  <span class="pernas"></span>
+</span>
+<div style="display: flex; flex-direction: column; width: 400px; border: 10px solid #4e342e; border-radius: 4px 15px 15px 4px; box-shadow: 12px 12px 25px rgba(0,0,0,0.3); font-family: 'Georgia', serif;">
+    
+    <!-- 1. DIV CAPA -->
+    <div style="background-color: #5d4037; color: #d4af37; padding: 25px; text-align: center; font-size: 22px; font-weight: bold; border-bottom: 5px double #d4af37;">
+        CAPA ESPIRITUAL
+    </div>
+
+    <!-- 2. DIV ESPIRITUAL CEGONHA -->
+    <div style="background-color: #f3e5f5; color: #6a1b9a; padding: 15px; text-align: center; font-style: italic; border-bottom: 1px solid #ce93d8; font-size: 14px; letter-spacing: 1px;">
+        ✨ Portal da Cegonha ✨
+    </div>
+
+    <!-- 3. DIV PÁGINAS MIOLO -->
+    <!-- O atributo contenteditable permite escrever direto nela como um papel -->
+    <div contenteditable="true" style="background-color: #fffde7; padding: 30px; min-height: 350px; color: #2c3e50; line-height: 1.8; font-size: 16px; outline: none; background-image: linear-gradient(#f0f0f0 1px, transparent 1px); background-size: 100% 28px; cursor: text;">
+        Clique aqui e escreva diretamente nas páginas do miolo...
+    </div>
+
+</div>
