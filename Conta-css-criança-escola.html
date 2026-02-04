@@ -1,0 +1,62 @@
+<div>
+<body style="background:#000; color:#00ff41; font-family:monospace; padding:20px;">
+
+    <!-- 1. PAINEL DE RESULTADOS (Cálculo via CSS puro) -->
+    <div id="painel" style="margin-bottom:20px; display:grid; gap:12px; border: 1px solid #222; padding: 20px;">
+        <span class="calc" id="soma">Soma: </span>
+        <span class="calc" id="sub">Subtração: </span>
+        <span class="calc" id="mult">Multiplicação: </span>
+        <span class="calc" id="div">Divisão: </span>
+    </div>
+
+    <!-- 2. O BLOCO DE NOTAS (Inputs disfarçados de texto) -->
+    <div style="display: flex; flex-direction: column; width: 400px; border: 10px solid #4e342e; border-radius: 4px 15px 15px 4px; box-shadow: 12px 12px 25px rgba(0,0,0,0.3); font-family: 'Georgia', serif;">
+        
+        <div style="background-color: #5d4037; color: #d4af37; padding: 15px; text-align: center; font-weight: bold; border-bottom: 5px double #d4af37;">
+            CADERNO DE VARIÁVEIS
+        </div>
+
+        <div style="background-color: #fffde7; padding: 30px; min-height: 150px; color: #2c3e50; line-height: 2; font-size: 18px; background-image: linear-gradient(#f0f0f0 1px, transparent 1px); background-size: 100% 28px;">
+            
+            Valor Principal: 
+            <input type="number" id="v" value="23" 
+                   oninput="document.body.style.setProperty('--v', this.value)"
+                   style="background:transparent; border:none; border-bottom:2px dashed red; width:60px; color:#d32f2f; font-weight:bold; font-size:20px; outline:none;">
+            
+            <br>
+            
+            Operador Base: 
+            <input type="number" id="op" value="10" 
+                   oninput="document.body.style.setProperty('--op', this.value)"
+                   style="background:transparent; border:none; border-bottom:2px dashed red; width:60px; color:#d32f2f; font-weight:bold; font-size:20px; outline:none;">
+            
+            <p style="font-size: 12px; color: #888; margin-top: 20px;">* Altera os números vermelhos para calcular.</p>
+        </div>
+    </div>
+
+    <style>
+        /* Variáveis Iniciais no Body */
+        :root { --v: 23; --op: 10; }
+
+        /* MOTOR DE CÁLCULO CSS */
+        .calc::after { color: #ff00ff; font-weight: bold; font-size: 1.2em; }
+        
+        #soma::after { counter-reset: r calc(var(--v) + var(--op)); content: " " counter(r); }
+        #sub::after  { counter-reset: r calc(var(--v) - var(--op)); content: " " counter(r); }
+        #mult::after { counter-reset: r calc(var(--v) * var(--op)); content: " " counter(r); }
+        #div::after  { counter-reset: r calc(var(--v) / var(--op)); content: " " counter(r); }
+
+        /* GRÁFICO DINÂMICO SEM JS */
+        .barra-v { height: calc(var(--v) * 2px); background: #ff595e; width: 30px; display: inline-block; transition: 0.3s; }
+        .barra-op { height: calc(var(--op) * 2px); background: #1982c4; width: 30px; display: inline-block; transition: 0.3s; }
+    </style>
+
+    <!-- Visual do Gráfico -->
+    <div style="margin-top: 30px; display: flex; align-items: flex-end; gap: 10px; height: 200px; border-left: 2px solid #333; border-bottom: 2px solid #333; width: 200px; padding-left: 10px;">
+        <div class="barra-v"></div>
+        <div class="barra-op"></div>
+    </div>
+
+</body>
+
+</div>
