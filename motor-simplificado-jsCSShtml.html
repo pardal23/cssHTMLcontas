@@ -1,0 +1,68 @@
+<style>
+    :root { --v: 50; --op: 5; }
+    
+    /* A Div Maluca das Flores */
+    .jardim-tremendo {
+        margin-top: 20px;
+        padding: 30px;
+        background: white;
+        border: 5px dashed ff69b4;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: #ff1493;
+        cursor: pointer;
+        /* Efeito de Tremer */
+        animation: tremor 0.1s infinite;
+        background-image: url('https://www.transparenttextures.com'); /* Padrão de flores */
+    }
+
+    @keyframes tremor {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        25% { transform: translate(-1px, -2px) rotate(-1deg); }
+        50% { transform: translate(-3px, 0px) rotate(1deg); }
+        75% { transform: translate(3px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -1px) rotate(-1deg); }
+    }
+
+    .painel { font-family: monospace; background: #f4f4f4; padding: 20px; border-radius: 8px; }
+    .res { color: red; font-weight: bold; }
+</style>
+
+<div class="painel">
+    <h3>Objeto Gerado pelo Sistema:</h3>
+    <div id="output"></div>
+    
+    <!-- A nova div adicionada ao motor -->
+    <div id="flores" class="jardim-tremendo">🌸 JESUS 🌸</div>
+</div>
+
+<script>
+    const criarRelatorio = () => {
+        const g = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+        const v1 = eval(g('--v'));
+        const v2 = eval(g('--op'));
+
+        return {
+            soma: v1 + v2,
+            sub: v1 - v2,
+            mult: v1 * v2,
+            div: v1 / v2,
+            msg: "JESUS",
+            timestamp: new Date().toLocaleTimeString()
+        };
+    };
+
+    const dados = criarRelatorio();
+
+    // Injeta os dados no painel e faz o console "gritar"
+    document.getElementById('output').innerHTML = `
+        Operação Soma: <span class="res">${dados.soma}</span><br>
+        Operação Multiplicação: <span class="res">${dados.mult}</span><br>
+        Mensagem: <strong>${dados.msg}</strong><br>
+        Sincronizado às: ${dados.timestamp}
+    `;
+
+    console.log("%c " + dados.msg + " TREMENDO!", "color: pink; font-size: 50px; font-weight: bold;");
+    console.table(dados);
+</script>
