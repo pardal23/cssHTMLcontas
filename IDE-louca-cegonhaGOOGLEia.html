@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>IDE LOUCA - PURE CODE</title>
+    <style>
+        /* --- ESTÉTICA DA IDE --- */
+        body { background: #000; color: #d4af37; font-family: 'Courier New', monospace; padding: 40px; }
+        .painel { border: 2px solid #222; padding: 25px; background: #050505; max-width: 900px; margin: auto; }
+        input { background: #000; border: 1px solid #d4af37; color: #00f2ff; padding: 12px; width: 100%; box-sizing: border-box; margin-bottom: 10px; }
+        button { background: #d4af37; color: #000; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; }
+        pre { background: #080808; padding: 20px; border: 1px solid #1a1a1a; color: #00f2ff; overflow-x: auto; white-space: pre-wrap; margin-top: 20px; }
+        
+        /* --- EXPLICAÇÃO DAS TAGS --- */
+        .info-section { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; color: #888; }
+        .tag-item { border-bottom: 1px solid #111; padding: 5px; }
+        .tag-item b { color: #d4af37; }
+    </style>
+</head>
+<body>
+
+<div class="painel">
+    <h2 style="text-align:center">🛠️ GERADOR DE MANIFESTAÇÃO JS/CSS</h2>
+    <input type="text" id="inputConst" placeholder="NOME DA CONSTANTE">
+    <button onclick="gerarCodigo()">GERAR ESTRUTURA LIMPA</button>
+
+    <div id="display" style="display:none">
+        <pre id="codeBlock"></pre>
+        
+        <h3 style="border-bottom: 1px solid #d4af37">📜 DICIONÁRIO SAGRADO (20 TAGS)</h3>
+        <div class="info-section" id="tagExplainer"></div>
+    </div>
+</div>
+
+<script>
+// --- AS 20 TAGS EXPLICADAS ---
+const tagsDicionario = [
+    {t: "details", d: "Cria um widget de revelação (abre/fecha)."},
+    {t: "summary", d: "Define o título visível da tag details."},
+    {t: "main", d: "Conteúdo principal e único da página."},
+    {t: "section", d: "Agrupa conteúdos temáticos relacionados."},
+    {t: "article", d: "Conteúdo independente e auto-contido."},
+    {t: "nav", d: "Bloco de links de navegação do site."},
+    {t: "aside", d: "Conteúdo lateral ou tangencial ao principal."},
+    {t: "header", d: "Cabeçalho de uma seção ou da página."},
+    {t: "footer", d: "Rodapé com informações finais/contato."},
+    {t: "figure", d: "Encapsula imagens, ilustrações ou diagramas."},
+    {t: "figcaption", d: "Legenda para o conteúdo da tag figure."},
+    {t: "mark", d: "Destaca ou realça um trecho de texto."},
+    {t: "time", d: "Representa data ou horário específico."},
+    {t: "canvas", d: "Área para desenhos e gráficos via Script."},
+    {t: "input", d: "Campo de entrada de dados do usuário."},
+    {t: "button", d: "Elemento clicável para disparar ações."},
+    {t: "form", d: "Contentor para envio de dados ao servidor."},
+    {t: "label", d: "Legenda de texto para um campo input."},
+    {t: "span", d: "Contentor genérico em linha para estilo."},
+    {t: "div", d: "Contentor genérico em bloco para estrutura."}
+];
+
+function gerarCodigo() {
+    const cName = document.getElementById('inputConst').value || 'minhaConst';
+    
+    // Injeção do Dicionário
+    const explainer = document.getElementById('tagExplainer');
+    explainer.innerHTML = tagsDicionario.map(item => `
+        <div class="tag-item"><b>&lt;${item.t}&gt;</b>: ${item.d}</div>
+    `).join('');
+
+    // Template de Código Limpo (CSS FORA DO JS)
+    const scriptTemplate = 
+`/* --- 10 LOOPS CSS EXPLICADOS --- */
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } } /* Movimento vertical suave */
+@keyframes pulsar { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } } /* Efeito de batimento */
+@keyframes girar   { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } /* Rotação contínua 360 */
+@keyframes brilho  { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } } /* Oscilação de visibilidade */
+@keyframes matiz   { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } } /* Ciclo de cores arco-íris */
+@keyframes balanço { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } } /* Inclinação lateral */
+@keyframes neon    { 0%, 100% { text-shadow: 0 0 5px gold; } 50% { text-shadow: 0 0 20px cyan; } } /* Brilho externo pulsante */
+@keyframes sombra  { 0%, 100% { box-shadow: 0 0 0px #fff; } 50% { box-shadow: 0 0 15px #fff; } } /* Expansão de sombra */
+@keyframes esticar { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(1.2); } } /* Deformação horizontal */
+@keyframes desfoque { 0%, 100% { filter: blur(0); } 50% { filter: blur(4px); } } /* Transição de nitidez */
+
+/* --- ESTRUTURA HTML --- */
+<div id="${cName}">ELEMENTO MANIFESTADO</div>
+
+/* --- JS LIMPO --- */
+<script>
+    // Captura direta pelo ID fornecido
+    const ${cName} = document.getElementById('${cName}');
+
+    // Manipulação Reativa (Sem logs/alerts)
+    ${cName}.onmouseenter = function() {
+        this.style.animation = 'pulsar 1s infinite';
+        this.style.color = '#00f2ff';
+    };
+
+    ${cName}.onmouseleave = function() {
+        this.style.animation = 'flutuar 3s infinite ease-in-out';
+        this.style.color = '#d4af37';
+    };
+
+    ${cName}.onclick = function() {
+        this.style.transform = 'rotate(10deg) scale(1.2)';
+    };
+<\/script>`;
+
+    document.getElementById('codeBlock').innerText = scriptTemplate;
+    document.getElementById('display').style.display = 'block';
+}
+</script>
+<div>
+<p style="text-align:center;"><a href="https://iacegonha.blogspot.com/">ia cegonha</a><br>🌷🌼🌹<a href="https://www.google.com/search?q=&sca_esv=c60b7adb80dd77ce&source=hp&ei=yU8_abXiOeiAi-gPtKnPaA&iflsig=AOw8s4IAAAAAaT9d2Z-rRMvrVfI235Ob-NMV_6nQHY2i&aep=22&udm=50&ved=0ahUKEwj16uz5pL6RAxVowAIHHbTUEw0QteYPCAo&oq=&gs_lp=Egdnd3Mtd2l6IgBIAFAAWABwAHgAkAEAmAEAoAEAqgEAuAEByAEAmAIAoAIAmAMAkgcAoAcAsgcAuAcAwgcAyAcAgAgB&sclient=gws-wiz">Ia google</a><br>🌷🌼🌹<a href="https://www.w3schools.com/js/js_2026.asp">W3 school 2026</a><br>🌷🌼🌹</p>
+
+</div>
+</body>
+</html>
